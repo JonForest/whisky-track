@@ -1,0 +1,25 @@
+ul.whisky-list li {
+  cursor: pointer;
+  padding: 5px;
+}
+
+div.sidebar {
+  float: left;
+  border-radius: 0px;
+  background-color: #eee;
+  height: 100%;
+  border-radius: 3px;
+}
+
+div.layout-sidebar {
+  display: flex;
+}
+
+div.layout-sidebar > :first-child {
+  width: 200px;
+  flex: 0 1 auto;
+}
+
+div.layout-sidebar > div {
+  flex: 1 1 auto;
+}

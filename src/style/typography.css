@@ -1,0 +1,59 @@
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+}
+
+a {
+  color: #55f;
+  text-decoration: none;
+  font-weight: bold
+}
+
+ul, ol {
+  color: #333;
+  padding: 5px;
+}
+
+li {
+  list-style: none;
+}
+
+div, input, button {
+  border-radius: 2px;
+}
+
+input {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #aaa;
+  padding: 5px;
+  outline: none;
+}
+
+input[type="submit"] {
+  margin: 10px;
+  padding: 10px;
+  background-color: #eee;
+}
+
+input[type="submit"]:active {
+  margin: 10px;
+  padding: 10px;
+  background-color: #ccc;
+}

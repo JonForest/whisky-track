@@ -1,23 +1,19 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import { BrowserRouter as Router, Route, NavLink, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Redirect, Switch} from 'react-router-dom';
 import './App.css';
-import AddWhisky from './whiskys/addWhisky';
-import ListWhiskiesContainer from './whiskys/listWhiskiesContainer';
-import Home from './home'
+import { routes, redirects } from './routes'
 
 const Links = () => (
   <nav>
     <NavLink exact activeClassName="active-link" to="/">Home</NavLink>
-    <NavLink exact activeClassName="active-link" to="/whiskys">Whiskys</NavLink>
-    <NavLink exact activeClassName="active-link" to="/whiskys/add">Add Whisky</NavLink>
+    <NavLink exact activeClassName="active-link" to="/whiskies">Whiskies</NavLink>
+    <NavLink exact activeClassName="active-link" to="/whiskies/add">Add Whisky</NavLink>
   </nav>
 )
 
 class App extends Component {
   render() {
-    console.log('hello')
-
     return (
       <Router>
       <div className="App">
@@ -25,19 +21,15 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to Whisky Track</h1>
         </header>
-        <div>
+        <main>
           {/* Links also need to be inside the Router component */}
           <Links />
           {/* Only render the first matching route */}
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/whiskys" component={ListWhiskiesContainer} />
-            <Route exact path="/whiskys/add" component={AddWhisky} />
-            {/* We can use regex to limit the id to only numbers */}
-            <Route exact path="/whiskys/:id(\d+)/edit" component={AddWhisky} />
-            <Route render={() => <h1>Page Not Found</h1>} />
+            {redirects.map((redirect, i) => (<Redirect key={i} {...redirect} />))}
+            {routes.map((route, i) => (<Route key={i} {...route} />))}
           </Switch>
-        </div>
+        </main>
       </div>
       </Router>
     );

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import WhiskyList from './whiskyList'
+import WhiskyList from './components/WhiskyList'
 import { withRouter } from 'react-router-dom'
 
 /**
@@ -9,24 +9,16 @@ import { withRouter } from 'react-router-dom'
  */
 
 class ListWhiskiesContainer extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
-    this.state = { whiskies: [{
-      id: 1,
-      name: 'Whisky 1'
-    }] }
-  }
-
-  onWhiskyClick = (id) => {
-    // Navigate to the edit screen
-    this.props.history.push(`/whiskys/${id}/edit`)
+    this.state = { whiskies: props.whiskies }
   }
 
   render () {
     return (
       <div>
         <h1>Whisky List</h1>
-        <WhiskyList whiskies={this.state.whiskies} onWhiskyClick={this.onWhiskyClick} />
+        <WhiskyList whiskies={this.state.whiskies} />
 
         <Link to="/">Home</Link>
         
