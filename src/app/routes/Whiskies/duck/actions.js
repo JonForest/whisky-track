@@ -1,25 +1,37 @@
 import types from './types'
-import { getWhiskies } from '../../../api/whisky-api';
-let nextId = 3
+import { getWhiskies, addWhisky, editWhisky } from '../../../api/whisky-api';
 
-const add = (name) => ({
-  type: types.ADD,
-  payload: {
-    name,
-    id: nextId++
+const add = (name) => {
+  return (dispatch) => {
+    return addWhisky(name)
+      .then(response => {
+        dispatch({
+          type: types.ADD,
+          data: response
+        })
+      })
   }
-})
+}
+
+const edit = (whisky) => {
+  return (dispatch) => {
+    return editWhisky(whisky)
+      .then(() => {
+        dispatch({
+          type: types.EDIT,
+          data: whisky
+        })
+      })
+  }
+}
 
 const fetchWhiskies = () => {
   return (dispatch) => {
     return getWhiskies()
       .then(response => {
-        nextId = response.length + 1
         dispatch({
-          type: 'GOT_WHISKIES',
-          payload: {
-            data: response
-          }
+          type: types.GOT_WHISKIES,
+          data: response
         })
       })
   }
@@ -27,5 +39,6 @@ const fetchWhiskies = () => {
 
 export default {
   add,
+  edit,
   fetchWhiskies
 }

@@ -21,18 +21,25 @@ app.get('/whiskies', (req, res) => {
 })
 
 app.post('/whiskies', (req, res) => {
-  whiskies.push(req.body)
-  res.sendStatus(200)
+  const name = req.body.name
+  if (!!name) {
+    const nextId = _.maxBy(whiskies, 'id').id + 1
+    const whisky = { name, id: nextId }
+    whiskies.push(whisky)
+    res.send(whisky)
+  } else {
+    res.sendStatus(400)
+  }
 })
 
 app.put('/whiskies/:id', (req, res) => {
   let whisky = whiskies.filter((item) => {
-    return Number(item.id) === Number(req.params.id)
+    return item.id === Number(req.params.id)
   })
 
   if (!!whisky) {
-    whisky = req.body
-    res.sendStatus(200)
+    // Don't actually bother updating
+    res.sendStatus(204)
   } else {
     res.sendStatus(400)
   }
