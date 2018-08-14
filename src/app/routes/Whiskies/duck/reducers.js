@@ -1,20 +1,11 @@
 import types from './types'
 
-const defaultState = [
-  {
-    name: 'Whisky 1',
-    id: 1
-  },
-  {
-    name: 'Whisky 2',
-    id: 2
-  }
-]
-
-const whiskies = (state = defaultState, action) => {
+const whiskies = (state = [], action) => {
   switch (action.type) {
     case types.ADD:
       return [...state, action.payload]
+    case types.GOT_WHISKIES:
+      return [...action.payload.data]
     default:
       return state
   }

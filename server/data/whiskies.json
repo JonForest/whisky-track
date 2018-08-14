@@ -1,0 +1,24 @@
+{
+  "whiskies": [
+    {
+      "name": "Whisky 1",
+      "id": 1
+    },
+    {
+      "name": "Whisky 2",
+      "id": 2
+    },
+    {
+      "name": "Whisky 3",
+      "id": 3
+    },
+    {
+      "name": "Whisky 4",
+      "id": 4
+    },
+    {
+      "name": "Whisky 5",
+      "id": 5
+    }
+  ]
+}

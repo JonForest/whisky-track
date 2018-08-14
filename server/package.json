@@ -1,0 +1,17 @@
+{
+  "name": "sample-server",
+  "version": "1.0.0",
+  "description": "Small sample server application to use in development",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.16.3"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.4",
+    "lodash": "^4.17.10"
+  }
+}

@@ -1,5 +1,7 @@
 const ADD = 'Whiskys/Add'
+const GOT_WHISKIES = 'GOT_WHISKIES'
 
 export default {
-  ADD
+  ADD,
+  GOT_WHISKIES
 }

@@ -1,7 +1,9 @@
 import actions from './actions'
 
-const simpleAdd = actions.add
+const add = actions.add
+const fetchWhiskies = actions.fetchWhiskies
 
-export default {
-  simpleAdd
+export {
+  add,
+  fetchWhiskies
 }

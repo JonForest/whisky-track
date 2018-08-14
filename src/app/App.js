@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from '../logo.svg';
 import { BrowserRouter as Router, Route, NavLink, Redirect, Switch} from 'react-router-dom';
 import './App.css';
-import { routes, redirects } from './routes'
+import { routes, redirects } from '../routes'
+import { whiskyOperations } from './routes/Whiskies/duck/index'
+import {connect} from 'react-redux'
 
 const Links = () => (
   <nav>
@@ -13,6 +15,10 @@ const Links = () => (
 )
 
 class App extends Component {
+  componentWillMount () {
+    this.props.fetchWhiskies()
+  }
+
   render() {
     return (
       <Router>
@@ -36,4 +42,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  whiskies: state.whiskies
+})
+
+export default connect(mapStateToProps, { fetchWhiskies: whiskyOperations.fetchWhiskies })(App);

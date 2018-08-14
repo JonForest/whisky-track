@@ -1,21 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { add } from '../../duck/actions'
+import { whiskyOperations } from '../../duck/index'
 import WhiskyList from '../../components/WhiskyList';
 import { withRouter } from 'react-router-dom'
 
 class AddWhisky extends Component {
   constructor (props) {
     super(props)
-  }
-
-  state = {
-    name: ''
+    this.state = { name: '' }
   }
 
   render() {
-    console.log(this.props)
-
     return (
       <div className='layout-sidebar'>
         <div className='sidebar'>
@@ -32,7 +27,7 @@ class AddWhisky extends Component {
             if (!name.trim()) {
               return
             }
-            this.props.dispatch(add(name))
+            this.props.dispatch(whiskyOperations.add(name))
             this.setState({ name: '' })
           }}>
             <label htmlFor='whisky-name'>Whisky Name: </label>
